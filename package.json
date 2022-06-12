@@ -1,0 +1,44 @@
+{
+  "name": "common-transfer-file-ctf-test-data-generator",
+  "version": "1.0.0",
+  "description": "This project is to allow generation of test data for the Common transfer file (CTF) XML Standard",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcio-uk/Common-transfer-file-CTF-Test-Data-Generator.git"
+  },
+  "keywords": [
+    "CTF"
+  ],
+  "author": "Acorn221",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arcio-uk/Common-transfer-file-CTF-Test-Data-Generator/issues"
+  },
+  "homepage": "https://github.com/arcio-uk/Common-transfer-file-CTF-Test-Data-Generator#readme",
+  "scripts": {
+    "dev": "ts-node-dev --no-notify --respawn --exit-child -r tsconfig-paths/register src/",
+    "reset-database": "ts-node-dev -r tsconfig-paths/register  src/ResetDatabase.ts",
+    "view-tables": "prisma studio",
+    "generate:regular": "node testDataGenerator/generateTestData.js 300 45 ./SQL/test_data.sql",
+    "generate:small": "node testDataGenerator/generateTestData.js 20 6 ./SQL/test_data_small.sql",
+    "db:clear-push": "cd SQL && python pre_pipeline.py",
+    "db:clear-push-mac": "cd SQL && python3 pre_pipeline.py"
+  },
+  "devDependencies": {
+    "@types/jsonstream": "^0.8.30",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "JSONStream": "^1.3.5",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.0.0",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.7.3",
+    "typescript-transform-paths": "^3.3.1"
+  }
+}
