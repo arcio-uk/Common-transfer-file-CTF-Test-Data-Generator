@@ -1,0 +1,112 @@
+{
+	"URN": "URN",
+	"UKPRN": "UKPRN",
+	"LA": {
+		"name": "LA (name)",
+		"code": "LA (code)"
+	},
+	"establishment": {
+		"name": "EstablishmentName",
+		"number": "EstablishmentNumber",
+		"type": {
+			"name": "TypeOfEstablishment (name)",
+			"code": "TypeOfEstablishment (code)",
+			"group": {
+				"name": "EstablishmentTypeGroup (name)",
+				"code": "EstablishmentTypeGroup (code)"
+			},
+			"status": {
+				"name": "EstablishmentStatus (name)",
+				"code": "EstablishmentStatus (code)"
+			}
+		},
+		"opened": {
+			"reason": {
+				"name": "ReasonEstablishmentOpened (name)",
+				"code": "ReasonEstablishmentOpened (code)"
+			},
+			"date": "OpenDate"
+		},
+		"closed": {
+			"reason": {
+				"name": "ReasonEstablishmentClosed (name)",
+				"code": "ReasonEstablishmentClosed (code)"
+			},
+			"date": "CloseDate"
+		}
+	},
+	"phaseOfEducation": {
+		"name": "PhaseOfEducation (name)",
+		"code": "PhaseOfEducation (code)"
+	},
+	"statutoryAge": {
+		"low": "StatutoryLowAge",
+		"high": "StatuitousHighAge"
+	},
+	"boarders": {
+		"name": "Boarders (name)",
+		"code": "Boarders (code)"
+	},
+	"nurseryProvision": "NurseryProvision (name)",
+	"sixthform": {
+		"name": "OfficialSixthForm (name)",
+		"code": "OfficialSixthForm (code)"
+	},
+	"gender": {
+		"name": "Gender (name)",
+		"code": "Gender (code)"
+	},
+	"religion": {
+		"name": "ReligiousCharacter (name)",
+		"code": "ReligiousCharacter (code)",
+		"ethos": "ReligiousEthos (name)",
+		"diocese": "Diocese (code)"
+	},
+	"admissionsPolicy": {
+		"name": "AdmissionsPolicy (name)",
+		"code": "AdmissionsPolicy (code)"
+	},
+	"specialClasses": {
+		"name": "SpecialClasses (name)",
+		"code": "SpecialClasses (code)",
+		"SEN": {
+			"regex": "SEN\\d+\\s\\(name\\)"
+		}
+	}, 
+	"pupilCount": {
+		"girls": "NumberOfGirls",
+		"boys": "NumberOfBoys",
+		"total": "NumberOfPupils",
+		"capacity": "SchoolCapacity",
+		"freeMeals": "FSM"
+	},
+	"trust": {
+		"flag": {
+			"name": "TrustSchoolFlag (name)",
+			"code": "TrustSchoolFlag (code)"
+		},
+		"name": "Trusts (name)",
+		"code": "Trusts (code)"
+	},
+	"address": {
+		"street": "Street",
+		"locality": "Locality",
+		"address3": "Address3",
+		"town": "Town",
+		"county": "County (name)",
+		"postcode": "Postcode"
+	},
+	"headTeacher": {
+		"firstname": "HeadFirstName",
+		"surname": "HeadLastName",
+		"jobTitle": "HeadPreferredJobTitle"
+	},
+	"ofstead": {
+		"rating": "OfstedRating (name)"
+	},
+	"misc": {
+		"website": "SchoolWebsite",
+		"phone": "TelephoneNum",
+		"inspector": "InspectorateName (name)"
+	}
+}
