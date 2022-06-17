@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import { createEntry, CSVtoArray } from 'misc';
 import * as readline from 'readline';
 
-const CreateSchoolJSON = async () => {
+const CreateSchoolJSON = async (amount: number) => {
   const csvStream = fs.createReadStream('src/data/edubasealldata20220612.csv');
 
   const rl = readline.createInterface({
@@ -19,6 +19,7 @@ const CreateSchoolJSON = async () => {
     } else {
       entries.push(createEntry(line, format));
     }
+    if (entries.length > amount) break;
   }
   fs.writeFile('src/data/edubasealldata.json', JSON.stringify(entries, null, 2), () => console.log('File written!'));
 };
