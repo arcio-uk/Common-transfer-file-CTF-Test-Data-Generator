@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+src/output.json
+
+# too big for git!
+src/data/edubasealldata.json
