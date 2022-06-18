@@ -8,10 +8,7 @@ export type BasicDetails = {
 };
 
 const create = () => ({
-	Forename: faker.name.firstName(),
-	Surname: faker.name.lastName(),
-	DOB: faker.date.betweens('1970-01-01', '2006-01-01'),
-	gender: Math.random() > 0.5 ? 'M' : 'F',
+	
 	
 
 });
