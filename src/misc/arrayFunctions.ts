@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import schoolFormat from './formattedSchool.json';
+//import schoolFormat from 'data/formattedSchool.json';
 
 /**
  * Converts the csv line with quotes into a string
