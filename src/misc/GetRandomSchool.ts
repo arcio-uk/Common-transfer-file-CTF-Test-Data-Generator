@@ -1,11 +1,11 @@
 import Schools from 'data/edubasealldata.json';
 
 export type school = {
-  URN: string;
+  URN: string | number;
   [key: string]: any;
 };
 
-const GetRandomSchool = (exclude?: school[]) => {
+const GetRandomSchool = (exclude?: school[]): school => {
   const schoolsArray:school[] = Schools as school[];
   let selected = schoolsArray[Math.floor(Math.random() * schoolsArray.length)];
   if (exclude) {
