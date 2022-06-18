@@ -1,3 +1,4 @@
+import { CHANCE_OF_OPTIONAL_VARS } from 'config';
 import * as fs from 'fs';
 import { createEntry, CSVtoArray } from 'misc';
 import * as readline from 'readline';
@@ -24,5 +25,7 @@ const CreateSchoolJSON = async (amount: number | undefined) => {
   fs.writeFile('src/data/edubasealldata.json', JSON.stringify(entries, null, 2), () => console.log('File written!'));
 };
 
+const optionalRand = (arg: any) => (Math.random() > CHANCE_OF_OPTIONAL_VARS ? arg : undefined);
+
 // eslint-disable-next-line import/prefer-default-export
-export { CreateSchoolJSON };
+export { CreateSchoolJSON, optionalRand };

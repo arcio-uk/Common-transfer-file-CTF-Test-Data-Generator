@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker';
 import GetRandomSchool from 'misc/GetRandomSchool';
+import { optionalRand } from 'misc/misc';
 
 export type SourceSchool = {
   LEA: string; // local establishment authority
@@ -14,7 +15,7 @@ export const create = (): SourceSchool => {
   return {
     LEA: school['LA (code)'],
     Estab: school.EstablishmentNumber,
-    URN: parseInt(school.URN, 10),
+    URN: optionalRand(school.URN),
     SchoolName: school.EstablishmentName,
     AcademicYear: faker.date.birthdate({ min: 2, max: 19, mode: 'age' }).getFullYear(),
   };
