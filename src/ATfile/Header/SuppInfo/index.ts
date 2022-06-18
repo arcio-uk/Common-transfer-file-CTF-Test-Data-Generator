@@ -12,6 +12,7 @@ export type SuppInfo = {
 const create = () => ({
   SuppId: faker.datatype.uuid(),
   [faker.animal.type()]: JSON.parse(faker.datatype.json()),
+  ...JSON.parse(faker.datatype.json()),
 });
 
 export { create };
