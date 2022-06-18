@@ -1,5 +1,5 @@
 import { GenerateRandomDate } from 'misc';
-import { DestSchool } from './DestSchool';
+import { DestSchool, create as cDestSchool } from './DestSchool';
 import { SourceSchool, create as cSourceSchool } from './SourceSchool';
 import { SuppInfo } from './SuppInfo';
 
@@ -21,6 +21,7 @@ const create = () => ({
   DocumentQualifier: 'full',
   SupplierID: 'ArcioLLC',
   SourceSchool: cSourceSchool(),
+  DestSchool: cDestSchool(),
 });
 
 export { create };
