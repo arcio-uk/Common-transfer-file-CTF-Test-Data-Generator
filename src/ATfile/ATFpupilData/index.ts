@@ -24,3 +24,13 @@ export type ATFpupilData = {
   SuppInfo?: SuppInfo;
 };
 
+const create = (): ATFpupilData => ({
+  ApplicationReference: '420-1969-09-K-123456' // TODO: do this properly
+  UPN: optionalRand('999999999999A'), // TODO: make a UPN generator
+  Forename: faker.name.firstName(),
+  Surname: faker.name.lastName(),
+  DOB: faker.date.betweens('1970-01-01', '2006-01-01'),
+  gender: Math.random() > 0.5 ? 'M' : 'F',
+});
+
+export { create };
