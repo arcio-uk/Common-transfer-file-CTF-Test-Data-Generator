@@ -1,6 +1,8 @@
 import { faker, Gender } from '@faker-js/faker';
 import { getRandomTitle, getRelationship, optionalRand } from 'misc/misc';
 
+faker.locale = 'gb';
+
 export type Contact = {
   Order?: number;
   Title?: string;
@@ -10,6 +12,10 @@ export type Contact = {
   Gender?: string;
   Relationship: string;
   Responsibility?: string;
+  Address?: any;
+  Phones?: any[];
+  Email?: any;
+  SuppInfo?: any;
 };
 
 const create = () => {
@@ -29,6 +35,7 @@ const create = () => {
     Gender: optionalRand(genderBool ? 'M' : 'F'),
     Relationship: getRelationship(genderBool),
     Responsibility: optionalRand(Math.random() < 0.7),
+    Address: optionalRand()
   };
 };
 
