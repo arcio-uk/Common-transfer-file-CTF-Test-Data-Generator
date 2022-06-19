@@ -27,5 +27,4 @@ const CreateSchoolJSON = async (amount: number | undefined) => {
 
 const optionalRand = (arg: any) => (Math.random() < CHANCE_OF_OPTIONAL_VARS ? arg : undefined);
 
-// eslint-disable-next-line import/prefer-default-export
 export { CreateSchoolJSON, optionalRand };
