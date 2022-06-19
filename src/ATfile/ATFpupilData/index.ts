@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
 import { SuppInfo, create as cSuppInfo } from 'ATfile/ATFpupilData/SuppInfo';
+import { create as cContact } from 'ATfile/ATFpupilData/Contacts';
 import { createApplicationReference, createUniqueLearnerNumber, createUPN } from 'misc/generators';
 import { optionalRand } from 'misc/misc';
 import moment from 'moment';
@@ -37,6 +38,11 @@ const create = (header: Header): ATFpupilData => ({
   DOB: moment(faker.date.betweens(`${header.SourceSchool.AcademicYear - 3}-01-01`, `${header.SourceSchool.AcademicYear - 3}-12-31`)[0]).format('DD/MM/YYYY'),
   Gender: Math.random() > 0.5 ? 'M' : 'F',
   SuppInfo: optionalRand(cSuppInfo()),
+  /*
+    at Arcio, we're not lazy, we're progressive,
+    so you can have many fathers, mothers and other contacts!
+  */
+  Contacts: [...Array(Math.floor(Math.random() * 3) + 1)].map(() => cContact()),
 });
 
 export { create };
