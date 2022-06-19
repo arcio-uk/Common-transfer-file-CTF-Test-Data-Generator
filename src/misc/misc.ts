@@ -62,7 +62,6 @@ const getRelationship = (gender: boolean) : string => {
       if (key[1].gender !== gender) return arr;
     }
     arr.push(...[...Array(key[1].freq).keys()].map(() => {
-      console.log(key[0]);
       return key[0];
     }));
     return arr;
