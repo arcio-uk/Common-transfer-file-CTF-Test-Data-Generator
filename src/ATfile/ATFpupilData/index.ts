@@ -6,6 +6,8 @@ import { createApplicationReference, createUniqueLearnerNumber, createUPN } from
 import { optionalRand } from 'misc/misc';
 import moment from 'moment';
 
+faker.locale = 'gb';
+
 export type ATFpupilData = {
   // https://docs.google.com/spreadsheets/d/1dFoRhl0pWDWaDoLBpHwiDPD4JzBdqKnZmp9hUG0YZnk/edit#gid=1461571706&range=E132
   ApplicationReference: string;
