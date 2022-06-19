@@ -1,7 +1,10 @@
+import { faker } from '@faker-js/faker';
 import { CHANCE_OF_OPTIONAL_VARS } from 'config';
 import * as fs from 'fs';
 import { createEntry, CSVtoArray } from 'misc';
 import * as readline from 'readline';
+
+faker.locale = 'gb';
 
 const CreateSchoolJSON = async (amount: number | undefined) => {
   const csvStream = fs.createReadStream('src/data/edubasealldata20220612.csv');
@@ -61,13 +64,52 @@ const getRelationship = (gender: boolean) : string => {
     if ('gender' in key[1]) {
       if (key[1].gender !== gender) return arr;
     }
-    arr.push(...[...Array(key[1].freq).keys()].map(() => {
-      return key[0];
-    }));
+    arr.push(...[...Array(key[1].freq).keys()].map(() => key[0]));
     return arr;
   }, []);
 
   return all[Math.floor(Math.random() * all.length)];
+};
+
+export type Address = {
+  BS7666Address?: {
+    SAON?: string;// Flat, apartment name or number or other sub-division of a dwelling
+    PAON: string;// Dwelling name and/or number
+    Street: string;
+    // At least one of Locality, Town and AdministrativeArea must be present
+    Locality?: string;
+    Town?: string;
+    PostTown?: string; // Post Office usually assigns these based on Sorting Office
+    AdministrativeArea?: string;
+    UniquePropertyReferenceNumber?: number;
+  },
+  AddressLines?: {
+    AddressLine1: string;
+    AddressLine2?: string;
+    AddressLine3?: string;
+    AddressLine4?: string;
+    AddressLine5?: string;
+  },
+  County?: string;
+  PostCode?: string;
+  Zip?: string;
+  Country?: string;
+  Easting?: number;
+  Northing?: number;
+};
+
+const generateAddress = () => {
+  // BS7666Address or the standard AddressLines
+  const addressType = Math.random() > 0.5;
+  const address = {};
+  if (addressType) {
+    address.BS7666Address = {
+
+    };
+  } else {
+
+  }
+  return address;
 };
 
 export {
