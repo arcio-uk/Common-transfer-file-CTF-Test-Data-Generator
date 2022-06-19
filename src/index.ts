@@ -1,6 +1,7 @@
-import { create } from 'ATfile/ATFpupilData';
 import fs from 'fs';
 import { CreateSchoolJSON } from 'misc/misc';
+import {create as cAtFile} from 'ATfile';
+
 // inporting for efficiency
 import 'data/edubasealldata.json';
 
@@ -12,7 +13,7 @@ const init = async () => {
     JSON.stringify(CreateHeader(), null, 2),
     () => console.log(CreateHeader()),
   );*/
-  console.log(create());
+  console.log(JSON.stringify(cAtFile(), null, 2));
 };
 
 init();

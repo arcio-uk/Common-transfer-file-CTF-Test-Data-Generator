@@ -18,6 +18,7 @@
   "homepage": "https://github.com/arcio-uk/Common-transfer-file-CTF-Test-Data-Generator#readme",
   "scripts": {
     "ts-dev": "ts-node-dev --no-notify --respawn --exit-child -r tsconfig-paths/register src/",
+    "csv-to-json": "ts-node-dev src/ConvertCSVtoJSON.ts",
     "reset-database": "ts-node-dev -r tsconfig-paths/register  src/ResetDatabase.ts",
     "view-tables": "prisma studio",
     "generate:regular": "node testDataGenerator/generateTestData.js 300 45 ./SQL/test_data.sql",
