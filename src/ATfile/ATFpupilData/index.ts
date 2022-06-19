@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
 import { SuppInfo } from 'ATfile/Header/SuppInfo';
-import { createApplicationReference, createUPN } from 'misc/generators';
+import { createApplicationReference, createUniqueLearnerNumber, createUPN } from 'misc/generators';
 import { optionalRand } from 'misc/misc';
 import moment from 'moment';
 
@@ -31,6 +31,7 @@ export type ATFpupilData = {
 const create = (header: Header): ATFpupilData => ({
   ApplicationReference: createApplicationReference(header),
   UPN: optionalRand(createUPN(header)), // TODO: make a UPN generator
+  UniqueLearnerNumber: optionalRand(createUniqueLearnerNumber()),
   Forename: faker.name.firstName(),
   Surname: faker.name.lastName(),
   DOB: moment(faker.date.betweens(`${header.SourceSchool.AcademicYear - 3}-01-01`, `${header.SourceSchool.AcademicYear - 3}-12-31`)[0]).format('DD/MM/YYYY'),

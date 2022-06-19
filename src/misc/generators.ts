@@ -59,4 +59,21 @@ const createUPN = (header: Header): string => {
   return Math.random() > 0.5 ? checkLetter + UPN + checkLetter : UPN + checkLetter;
 };
 
-export { createApplicationReference, createUPN };
+/**
+ * This generates the unique learner number with the check digit on the end
+ *
+ * ? Seems significantly more convoluted than it should be
+ * ? what's wrong with num % 9?
+ * @returns
+ */
+const createUniqueLearnerNumber = (): string => {
+  const num = String(faker.datatype.number({ min: 100000000, max: 999999999 }));
+  let checkNum = 0;
+  Object.entries(num.split('')).forEach((digit) => {
+    checkNum += (10 - parseInt(digit[0], 10)) * parseInt(digit[1], 10);
+  });
+  const checkNumChar = String(checkNum % 9);
+  return num + checkNumChar;
+};
+
+export { createApplicationReference, createUPN, createUniqueLearnerNumber };
