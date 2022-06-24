@@ -1,4 +1,6 @@
+import { faker } from '@faker-js/faker';
 import { SuppInfo, createSuppInfo } from 'misc/misc';
+import moment from 'moment';
 
 const SENprovisions = ['N', 'E', 'K'];
 const SENtypes = ['PLD', 'MLD', 'SLD', 'PMLD', 'SEMH', 'SLCN', 'HI', 'VI', 'MSI', 'PD', 'ASD', 'OTH', 'NSA*'];
@@ -21,12 +23,18 @@ type SENhistory = {
   SuppInfo?: SuppInfo;
 };
 
-const create = (pupil: Pupil) => {
-  const SEN: SENhistory['SEN'] = [...Array(Math.floor(Math.random() * 3)).keys()].map(() => {
-    StartDate
-  });
+const create = (DOB: string) => {
+  const SEN: SENhistory['SEN'] = [...Array(Math.floor(Math.random() * 3)+1).keys()].map(() => ({
+    SEN: {
+      StartDate: moment(faker.date.between(moment(DOB, 'DD/MM/YYYY').date(), Date.now())).format('DD/MM/YY'),
+      SENprovision: SENprovisions[Math.floor(Math.random() * SENprovisions.length)],
+    },
+  }));
+
+  
 
   return {
+    SEN,
     SuppInfo: createSuppInfo(),
   };
 };
