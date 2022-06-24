@@ -4,7 +4,7 @@ import { optionalRand } from 'misc/misc';
 
 export type SourceSchool = {
   LEA: string; // local establishment authority
-  Estab: String; // EstablishmentNumber
+  Estab: string; // EstablishmentNumber
   URN?: number;
   SchoolName: string;
   AcademicYear: number;
