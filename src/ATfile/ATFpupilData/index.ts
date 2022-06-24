@@ -1,9 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
-import { SuppInfo, create as cSuppInfo } from 'ATfile/ATFpupilData/SuppInfo';
 import { create as cContact } from 'ATfile/ATFpupilData/Contacts';
 import { createApplicationReference, createUniqueLearnerNumber, createUPN } from 'misc/generators';
-import { optionalRand } from 'misc/misc';
+import { optionalRand, SuppInfo, createSuppInfo as cSuppInfo } from 'misc/misc';
 import moment from 'moment';
 
 faker.locale = 'gb';
