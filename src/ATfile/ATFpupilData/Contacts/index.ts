@@ -37,6 +37,7 @@ const create = () => {
     Gender: optionalRand(genderBool ? 'M' : 'F'),
     Relationship: getRelationship(genderBool),
     Responsibility: optionalRand(Math.random() < 0.7),
+    Address: optionalRand(generateAddress()),
   };
 };
 
