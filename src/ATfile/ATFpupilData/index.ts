@@ -7,6 +7,7 @@ import {
 } from 'misc/misc';
 import moment from 'moment';
 import { Phones, create as cPhones } from './Phones';
+import { Admissions, create as cAdmissions } from './Admissions';
 
 faker.locale = 'en_GB';
 
@@ -24,7 +25,7 @@ export type ATFpupilData = {
   FSMhistory?: any;
   LookedAfter?: any;
   SENhistory?: any;
-  Admissions?: any;
+  Admissions?: Admissions;
   Address?: Address;
   Phones?: Phones;
   Email?: string;
@@ -42,6 +43,7 @@ const create = (header: Header): ATFpupilData => ({
   DOB: moment(faker.date.betweens(`${header.SourceSchool.AcademicYear - 3}-01-01`, `${header.SourceSchool.AcademicYear - 3}-12-31`)[0]).format('DD/MM/YYYY'),
   Gender: Math.random() > 0.5 ? 'M' : 'F',
 
+  Admissions: optionalRand(cAdmissions()),
   Address: optionalRand(generateAddress()),
   Phones: optionalRand(cPhones()),
   Email: optionalRand(faker.internet.email()),
