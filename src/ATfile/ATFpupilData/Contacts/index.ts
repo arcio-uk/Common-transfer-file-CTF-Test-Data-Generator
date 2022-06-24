@@ -3,7 +3,7 @@ import {
   getRandomTitle, getRelationship, optionalRand, Address, generateAddress, SuppInfo,
 } from 'misc/misc';
 
-faker.locale = 'gb';
+faker.locale = 'en_GB';
 
 export type Contact = {
   Order?: number;

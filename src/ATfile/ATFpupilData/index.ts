@@ -5,7 +5,7 @@ import { createApplicationReference, createUniqueLearnerNumber, createUPN } from
 import { optionalRand, SuppInfo, createSuppInfo as cSuppInfo } from 'misc/misc';
 import moment from 'moment';
 
-faker.locale = 'gb';
+faker.locale = 'en_GB';
 
 export type ATFpupilData = {
   // https://docs.google.com/spreadsheets/d/1dFoRhl0pWDWaDoLBpHwiDPD4JzBdqKnZmp9hUG0YZnk/edit#gid=1461571706&range=E132

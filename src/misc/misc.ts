@@ -6,7 +6,7 @@ import * as readline from 'readline';
 import Chance from 'chance';
 
 const chance = new Chance();
-faker.locale = 'gb';
+faker.locale = 'en_GB';
 
 const CreateSchoolJSON = async (amount: number | undefined) => {
   const csvStream = fs.createReadStream('src/data/edubasealldata20220612.csv');
