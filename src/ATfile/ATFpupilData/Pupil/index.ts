@@ -36,7 +36,7 @@ export type Pupil = {
 };
 
 const create = (header: Header): Pupil => {
-  const DOB = moment(faker.date.betweens(`${header.SourceSchool.AcademicYear - 3}-01-01`, `${header.SourceSchool.AcademicYear - 3}-12-31`)[0]).format('DD/MM/YYYY'),;
+  const DOB = moment(faker.date.betweens(`${header.SourceSchool.AcademicYear - 3}-01-01`, `${header.SourceSchool.AcademicYear - 3}-12-31`)[0]).format('DD/MM/YYYY');
   return {
     ApplicationReference: createApplicationReference(header),
     UPN: optionalRand(createUPN(header)), // TODO: make a UPN generator
@@ -46,7 +46,7 @@ const create = (header: Header): Pupil => {
     DOB,
     Gender: Math.random() > 0.5 ? 'M' : 'F',
 
-		SENhistory: optionalRand(cSENhistory(DOB)),
+    SENhistory: optionalRand(cSENhistory(DOB)),
     Admissions: optionalRand(cAdmissions()),
     Address: optionalRand(generateAddress()),
     Phones: optionalRand(cPhones()),

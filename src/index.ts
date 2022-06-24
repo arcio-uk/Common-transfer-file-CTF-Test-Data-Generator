@@ -1,5 +1,3 @@
-import fs from 'fs';
-import { CreateSchoolJSON } from 'misc/misc';
 import { create as cAtFile } from 'ATfile';
 
 // inporting for efficiency

@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-//import schoolFormat from 'data/formattedSchool.json';
+// import schoolFormat from 'data/formattedSchool.json';
 
 /**
  * Converts the csv line with quotes into a string
@@ -29,57 +29,6 @@ export const CSVtoArray = (text: string): string[] => {
   // Handle special case of empty last value.
   if (/,\s*$/.test(text)) a.push('');
   return a;
-};
-
-/**
- * Gets an object's key for a given value
- *
- * @param object
- * @param value
- * @returns
- */
-const getKeyByValue = (object: { [x: string]: any; }, value: any) => Object.keys(object).find((key) => object[key] === value);
-
-/**
- * TODO: this needs to get finished, might not be worth doing
- * This function is to normalise the flatfile object input.
- *
- * @param fm The 'schoolFormat'
- * @param school The flat file JSON
- * @returns Normalised Json
- */
-const replaceEntry = (fm: any, school: any) => {
-  const reoccour = (format: any) => {
-    for (const property in format) {
-      // if there's Object.regex, we should create an array containing positive regex matches
-      // eslint-disable-next-line no-continue
-      if (format[property] === undefined) continue;
-      if (format[property].regex) {
-        format[property] = Object.keys(school)
-          .filter((key) => new RegExp(format[property].regex, 'g').test(key))
-          .map((key) => ({ [key]: school[key] }));
-      } else if (typeof format[property] === 'object') {
-        // if there's a nested object, recursively replace it's children.
-        console.log(`format[${property}] === object, ${format[property]}`);
-        format[property] = reoccour(format[property]);
-      } else if (format[property] !== undefined) {
-        // replace the contents of the child with the data
-        const key = getKeyByValue(format, property);
-        if (!key) {
-          // delete format[property];
-        } else {
-          console.log(`Just set format[${key}] to ${school[property]}`);
-          format[key] = school[property];
-        }
-      } else {
-        console.log(`Would be deleting: ${format[property]}: ${school[format[property]]}`);
-        //
-      }
-    }
-    return format;
-  };
-  const modifiedFormat = reoccour(fm);
-  return modifiedFormat;
 };
 
 /**

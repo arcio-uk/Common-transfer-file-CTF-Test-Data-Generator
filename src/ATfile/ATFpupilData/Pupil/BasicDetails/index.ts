@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-faker.locale = 'gb';
+faker.locale = 'en_GB';
 
 export type BasicDetails = {
   ApplicationReference: string;
