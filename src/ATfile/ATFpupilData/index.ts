@@ -2,8 +2,11 @@ import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
 import { create as cContact } from 'ATfile/ATFpupilData/Contacts';
 import { createApplicationReference, createUniqueLearnerNumber, createUPN } from 'misc/generators';
-import { optionalRand, SuppInfo, createSuppInfo as cSuppInfo } from 'misc/misc';
+import {
+  optionalRand, SuppInfo, createSuppInfo as cSuppInfo, Address, generateAddress,
+} from 'misc/misc';
 import moment from 'moment';
+import { Phones, create as cPhones } from './Phones';
 
 faker.locale = 'en_GB';
 
@@ -22,8 +25,8 @@ export type ATFpupilData = {
   LookedAfter?: any;
   SENhistory?: any;
   Admissions?: any;
-  Address?: any;
-  Phones?: any;
+  Address?: Address;
+  Phones?: Phones;
   Email?: string;
   Contacts?: any;
   SchoolHistory?: any;
@@ -38,12 +41,17 @@ const create = (header: Header): ATFpupilData => ({
   Surname: faker.name.lastName(),
   DOB: moment(faker.date.betweens(`${header.SourceSchool.AcademicYear - 3}-01-01`, `${header.SourceSchool.AcademicYear - 3}-12-31`)[0]).format('DD/MM/YYYY'),
   Gender: Math.random() > 0.5 ? 'M' : 'F',
-  SuppInfo: optionalRand(cSuppInfo()),
+
+  Address: optionalRand(generateAddress()),
+  Phones: optionalRand(cPhones()),
+  Email: optionalRand(faker.internet.email()),
   /*
     at Arcio, we're not lazy, we're progressive,
     so you can have many fathers, mothers and other contacts!
   */
   Contacts: [...Array(Math.floor(Math.random() * 3) + 1)].map(() => cContact()),
+
+  SuppInfo: optionalRand(cSuppInfo()),
 });
 
 export { create };
