@@ -10,6 +10,7 @@ import { Phones, create as cPhones } from 'ATfile/ATFpupilData/Pupil/Phones';
 import { Admissions, create as cAdmissions } from 'ATfile/ATFpupilData/Pupil/Admissions';
 import { SENhistory, create as cSENhistory } from 'ATfile/ATFpupilData/Pupil/SENhistory';
 import { SchoolHistory, create as cSchoolHistory } from 'ATfile/ATFpupilData/Pupil/SchoolHistory';
+import { LookedAfter, create as cLookedAfter } from 'ATfile/ATFpupilData/Pupil/LookedAfter';
 
 faker.locale = 'en_GB';
 
@@ -25,7 +26,7 @@ export type Pupil = {
   Gender: string;
   BasicDetails?: any;
   FSMhistory?: any;
-  LookedAfter?: any;
+  LookedAfter?: LookedAfter;
   SENhistory?: SENhistory;
   Admissions?: Admissions;
   Address?: Address;
@@ -47,6 +48,7 @@ const create = (header: Header): Pupil => {
     DOB,
     Gender: Math.random() > 0.5 ? 'M' : 'F',
 
+    LookedAfter: optionalRand(cLookedAfter()),
     SENhistory: optionalRand(cSENhistory(DOB)),
     Admissions: optionalRand(cAdmissions()),
     Address: optionalRand(generateAddress()),
