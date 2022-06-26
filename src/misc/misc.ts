@@ -163,7 +163,7 @@ const generateAddress = (): Address => {
   return address;
 };
 
-const getDateFromDOB = (DOB: string) => moment(DOB, 'DD/MM/YYYY').date();
+const getDateFromString = (DOB: string) => moment(DOB, 'DD/MM/YYYY').toDate();
 
 export {
   CreateSchoolJSON,
@@ -172,5 +172,5 @@ export {
   getRelationship,
   createSuppInfo,
   generateAddress,
-  getDateFromDOB,
+  getDateFromString,
 };
