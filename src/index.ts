@@ -1,14 +1,17 @@
-import { create as CreateHeader } from 'ATfile/Header';
-import fs from 'fs';
+import { create as cAtFile } from 'ATfile';
+
+// inporting for efficiency
+import 'data/edubasealldata.json';
 
 const init = async () => {
+  // await CreateSchoolJSON(500);
   console.log('Generating!');
-  /*fs.writeFile(
+  /* fs.writeFile(
     'src/output.json',
     JSON.stringify(CreateHeader(), null, 2),
     () => console.log(CreateHeader()),
-  );*/
-  console.log(CreateHeader());
+  ); */
+  console.log(JSON.stringify(cAtFile(), null, 2));
 };
 
 init();

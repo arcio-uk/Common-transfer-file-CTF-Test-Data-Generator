@@ -1,17 +1,15 @@
 import { faker } from '@faker-js/faker';
-faker.locale = 'gb';
+
+faker.locale = 'en_GB';
 
 export type BasicDetails = {
-	ApplicationReference: string;
-	UPN: string;
-	UniqueLearnerNumber:
+  ApplicationReference: string;
+  UPN: string;
+  UniqueLearnerNumber: number;
 };
 
 const create = () => ({
-	Forename: faker.name.firstName(),
-	Surname: faker.name.lastName(),
-	DOB: faker.date.betweens('1970-01-01', '2006-01-01'),
-	gender: Math.random() > 0.5 ? 'M' : 'F',
-	
 
 });
+
+export { create };

@@ -6,3 +6,5 @@ Once this project has been made functional, the objective is to make it open sou
 
 # Resources
 [CTF Specification Page](https://www.gov.uk/government/collections/common-transfer-file)
+
+[CBDS download page](https://www.gov.uk/government/publications/common-basic-data-set-cbds-database)

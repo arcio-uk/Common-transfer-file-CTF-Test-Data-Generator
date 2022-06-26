@@ -1,8 +1,7 @@
 import { GenerateRandomDate } from 'misc';
-import { optionalRand } from 'misc/misc';
+import { optionalRand, SuppInfo, createSuppInfo } from 'misc/misc';
 import { DestSchool, create as cDestSchool } from './DestSchool';
 import { SourceSchool, create as cSourceSchool } from './SourceSchool';
-import { SuppInfo, create as cSuppInfo } from './SuppInfo';
 
 export type Header = {
   DocumentName: string;
@@ -23,7 +22,7 @@ const create = () => ({
   SupplierID: 'ArcioLLC',
   SourceSchool: cSourceSchool(),
   DestSchool: cDestSchool(),
-  SuppInfo: optionalRand(cSuppInfo()),
+  SuppInfo: optionalRand(createSuppInfo()),
 });
 
 export { create };
