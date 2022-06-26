@@ -47,6 +47,7 @@
   "dependencies": {
     "@faker-js/faker": "^7.3.0",
     "chance-cli": "^1.0.7",
-    "moment": "^2.29.3"
+    "moment": "^2.29.3",
+    "xml-js": "^1.6.11"
   }
 }
