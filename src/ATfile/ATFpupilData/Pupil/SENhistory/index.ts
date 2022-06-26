@@ -14,10 +14,8 @@ type SENneedType = {
 
 type SENhistory = {
   SEN: {
-    SEN: {
       StartDate: string;
       SENprovision: string; // N, E or K
-    };
   }[];
   SENneeds?: {
     SENneed: SENneedType;
@@ -28,10 +26,8 @@ type SENhistory = {
 const create = (DOB: string) => {
   const DOBdate = moment(DOB, 'DD/MM/YYYY').date();
   const SEN: SENhistory['SEN'] = [...Array(Math.floor(Math.random() * 3) + 1).keys()].map(() => ({
-    SEN: {
-      StartDate: moment(faker.date.between(DOBdate, Date.now())).format('DD/MM/YY'),
-      SENprovision: SENprovisions[Math.floor(Math.random() * SENprovisions.length)],
-    },
+    StartDate: moment(faker.date.between(DOBdate, Date.now())).format('DD/MM/YY'),
+    SENprovision: SENprovisions[Math.floor(Math.random() * SENprovisions.length)],
   }));
   const senNeedsCount = Math.floor(Math.random() * SENtypes.length - 1) + 1;
   const SENneed: SENneedType = [...Array(senNeedsCount).keys()].map((index) => {
