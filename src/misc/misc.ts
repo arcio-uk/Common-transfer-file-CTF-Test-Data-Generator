@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { createEntry, CSVtoArray } from 'misc';
 import * as readline from 'readline';
 import Chance from 'chance';
+import moment from 'moment';
 
 const chance = new Chance();
 faker.locale = 'en_GB';
@@ -162,6 +163,8 @@ const generateAddress = (): Address => {
   return address;
 };
 
+const getDateFromDOB = (DOB: string) => moment(DOB, 'DD/MM/YYYY').date();
+
 export {
   CreateSchoolJSON,
   optionalRand,
@@ -169,4 +172,5 @@ export {
   getRelationship,
   createSuppInfo,
   generateAddress,
+  getDateFromDOB,
 };
