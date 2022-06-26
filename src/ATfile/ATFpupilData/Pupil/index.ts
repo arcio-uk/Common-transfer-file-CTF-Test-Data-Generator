@@ -9,6 +9,7 @@ import moment from 'moment';
 import { Phones, create as cPhones } from 'ATfile/ATFpupilData/Pupil/Phones';
 import { Admissions, create as cAdmissions } from 'ATfile/ATFpupilData/Pupil/Admissions';
 import { SENhistory, create as cSENhistory } from 'ATfile/ATFpupilData/Pupil/SENhistory';
+import { SchoolHistory, create as cSchoolHistory } from 'ATfile/ATFpupilData/Pupil/SchoolHistory';
 
 faker.locale = 'en_GB';
 
@@ -31,7 +32,7 @@ export type Pupil = {
   Phones?: Phones;
   Email?: string;
   Contacts?: any;
-  SchoolHistory?: any;
+  SchoolHistory?: SchoolHistory;
   SuppInfo?: SuppInfo;
 };
 
@@ -56,7 +57,7 @@ const create = (header: Header): Pupil => {
     so you can have many fathers, mothers and other contacts!
   */
     Contacts: [...Array(Math.floor(Math.random() * 3) + 1)].map(() => cContact()),
-
+    SchoolHistory: optionalRand(cSchoolHistory(DOB)),
     SuppInfo: optionalRand(cSuppInfo()),
   };
 };
