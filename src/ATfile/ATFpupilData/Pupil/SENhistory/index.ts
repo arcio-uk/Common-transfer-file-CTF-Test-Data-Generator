@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import {
-  SuppInfo, createSuppInfo, optionalRand, getDateFromDOB,
+  SuppInfo, createSuppInfo, optionalRand, getDateFromString,
 } from 'misc/misc';
 import moment from 'moment';
 
@@ -26,7 +26,7 @@ type SENhistory = {
 };
 
 const create = (DOB: string) => {
-  const DOBdate = getDateFromDOB(DOB);
+  const DOBdate = getDateFromString(DOB);
   const SEN: SENhistory['SEN'] = [...Array(Math.floor(Math.random() * 3) + 1).keys()].map(() => ({
     StartDate: moment(faker.date.between(DOBdate, Date.now())).format('DD/MM/YY'),
     SENprovision: SENprovisions[Math.floor(Math.random() * SENprovisions.length)],
