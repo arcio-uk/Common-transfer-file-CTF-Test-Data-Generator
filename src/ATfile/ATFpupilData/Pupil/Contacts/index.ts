@@ -1,9 +1,14 @@
 import { faker, Gender } from '@faker-js/faker';
 import {
-  getRandomTitle, getRelationship, optionalRand, Address, generateAddress, SuppInfo,
+  getRandomTitle, getRelationship, optionalRand, Address, generateAddress, SuppInfo, createSuppInfo,
 } from 'misc/misc';
+import { Phones, create as cPhones } from 'ATfile/ATFpupilData/Pupil/Phones';
 
 faker.locale = 'en_GB';
+
+const addressAsPupil = {
+  AddressAsPupil: true,
+};
 
 export type Contact = {
   Order?: number;
@@ -15,8 +20,8 @@ export type Contact = {
   Relationship: string;
   Responsibility?: string;
   Address?: Address;
-  Phones?: any[];
-  Email?: any;
+  Phones?: Phones;
+  Email?: string;
   SuppInfo?: SuppInfo;
 };
 
@@ -37,7 +42,10 @@ const create = () => {
     Gender: optionalRand(genderBool ? 'M' : 'F'),
     Relationship: getRelationship(genderBool),
     Responsibility: optionalRand(Math.random() < 0.7),
-    Address: optionalRand(generateAddress()),
+    Address: optionalRand(Math.random() > 0.5 ? generateAddress() : addressAsPupil),
+    Phones: optionalRand(cPhones()),
+    Email: optionalRand(faker.internet.email()),
+    SuppInfo: optionalRand(createSuppInfo()),
   };
 };
 
