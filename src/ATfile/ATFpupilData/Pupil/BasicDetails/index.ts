@@ -2,9 +2,8 @@ import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
 import { createUPN } from 'misc/generators';
 import {
-  createNCyearActual, getEthnicity, getLanguage, getLanguageType, optionalRand, SuppInfo,
+  createNCyearActual, createSuppInfo, getEthnicity, getLanguage, getLanguageType, getServiceChild, optionalRand, SuppInfo,
 } from 'misc/misc';
-import moment from 'moment';
 
 faker.locale = 'en_GB';
 
@@ -24,11 +23,19 @@ export type BasicDetails = {
     }[];
   };
   ServiceChild?: string;
-  MedicalFlag?: boolean;
+  MedicalFlag?: boolean | number;
   Disabilities?: {
     Disability: string[];
-  };
+  } | string;
   SuppInfo?: SuppInfo;
+};
+
+const getDisabilities = (): BasicDetails['Disabilities'] => {
+  if (Math.random() < 0.05) {
+    const disabilities = ['NCOL', 'NONE', 'MOB', 'HAND', 'PC', 'EAT', 'MED', 'INC', 'COMM', 'LD', 'HEAR', 'VIS', 'BEH', 'CON', 'AUT', 'DDA', 'OTH'];
+    return disabilities[Math.floor(Math.random() * disabilities.length)];
+  }
+  return Math.random() > 0.1 ? 'NONE' : 'NOCL';
 };
 
 const create = (header: Header, DOB: string): BasicDetails => {
@@ -38,6 +45,13 @@ const create = (header: Header, DOB: string): BasicDetails => {
     LanguageType: getLanguageType(),
     Language: getLanguage(),
   }));
+
+  const MedicalFlag = () => {
+    if (Math.random() > 0.5) {
+      return Math.random() > 0.5 ? 0 : 1;
+    }
+    return Math.random() > 0.5;
+  };
 
   return {
     UPN: optionalRand(createUPN(header)),
@@ -49,6 +63,10 @@ const create = (header: Header, DOB: string): BasicDetails => {
     Ethnicity,
     EthnicitySource: Ethnicity && Math.random() > 0.7 ? 'C' : 'P',
     Languages: optionalRand({ Type }),
+    ServiceChild: optionalRand(getServiceChild()),
+    MedicalFlag: optionalRand(MedicalFlag()),
+    Disabilities: optionalRand(getDisabilities()),
+    SuppInfo: optionalRand(createSuppInfo()),
   };
 };
 

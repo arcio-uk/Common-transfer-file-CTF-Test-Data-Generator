@@ -215,6 +215,11 @@ const Languages = ['ACL', 'ADA', 'AFA', 'AFK', 'AKA', 'AKA', 'AKA', 'ALB', 'ALU'
 
 const getLanguage = (): string => Languages[Math.floor(Math.random() * Languages.length)];
 
+const getServiceChild = (): string => {
+  const types = ['Y', 'N', 'U', 'R'];
+  return types[Math.floor(Math.random() * types.length)];
+};
+
 export {
   CreateSchoolJSON,
   optionalRand,
@@ -227,4 +232,5 @@ export {
   getEthnicity,
   getLanguageType,
   getLanguage,
+  getServiceChild,
 };
