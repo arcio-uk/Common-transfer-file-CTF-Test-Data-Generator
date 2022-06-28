@@ -6,8 +6,8 @@ type ATfile = {
   ATFpupilData: ATFpupilDataType;
 }
 
-const create = (PUPILS_TO_GENERATE: number): ATfile => {
-  const header = cHeader();
+const create = (PUPILS_TO_GENERATE: number, _inHeader?: Header): ATfile => {
+  const header = _inHeader || cHeader();
   const ATFpupilData = cATFpupilData(header, PUPILS_TO_GENERATE);
   return {
     header,
@@ -15,4 +15,4 @@ const create = (PUPILS_TO_GENERATE: number): ATfile => {
   };
 };
 
-export { create };
+export { ATfile, create };
