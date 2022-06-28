@@ -38,7 +38,7 @@ const create = (DOB: string) => {
     const endDate = faker.date.between(startDate, new Date());
     return {
       NeedStartDate: optionalRand(moment(startDate).format('DD/MM/YYYY')),
-      NeedEndDate: optionalRand(moment(endDate)).format('DD/MM/YYYY'),
+      NeedEndDate: optionalRand(moment(endDate).format('DD/MM/YYYY')),
       SENtypeRank: index,
       SENtype: SENtypes[Math.floor(Math.random() * SENtypes.length)],
     };
