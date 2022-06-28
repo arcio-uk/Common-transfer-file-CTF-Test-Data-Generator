@@ -19,12 +19,8 @@
   "scripts": {
     "ts-dev": "ts-node-dev --no-notify --respawn --exit-child -r tsconfig-paths/register src/",
     "csv-to-json": "ts-node-dev src/ConvertCSVtoJSON.ts",
-    "reset-database": "ts-node-dev -r tsconfig-paths/register  src/ResetDatabase.ts",
-    "view-tables": "prisma studio",
-    "generate:regular": "node testDataGenerator/generateTestData.js 300 45 ./SQL/test_data.sql",
-    "generate:small": "node testDataGenerator/generateTestData.js 20 6 ./SQL/test_data_small.sql",
-    "db:clear-push": "cd SQL && python pre_pipeline.py",
-    "db:clear-push-mac": "cd SQL && python3 pre_pipeline.py"
+    "create-1-student": "ts-node-dev --no-notify --exit-child -r tsconfig-paths/register src/CreateStudents.ts -- 1",
+    "create-5-students": "ts-node-dev --no-notify --exit-child -r tsconfig-paths/register src/CreateStudents.ts -- 5"
   },
   "devDependencies": {
     "@types/chance": "^1.1.3",
