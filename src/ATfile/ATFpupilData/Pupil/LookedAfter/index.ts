@@ -1,6 +1,6 @@
 type LookedAfter = {
   InCare: boolean;
-  CareAuthority: string;
+  CareAuthority?: number | string;
 };
 
 const getCareAuthority = () => {
@@ -10,7 +10,7 @@ const getCareAuthority = () => {
   return Math.random() > 0.5 ? 'MMM' : 'XXX';
 };
 
-const create = () => {
+const create = (): LookedAfter => {
   const InCare = Math.random() > 0.1;
   return {
     InCare,
