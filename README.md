@@ -3,7 +3,7 @@ This project is to allow generation of test data for the Common transfer file (C
 
 # Need Custom Data?
 
-	Email us at [queries@arcio.uk](mailto:queries@arcio.uk) for custom test data generation services to meet your requirements!
+Email us at [queries@arcio.uk](mailto:queries@arcio.uk) for custom test data generation services to meet your requirements!
 
 # How to use it
 
