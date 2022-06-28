@@ -2,7 +2,7 @@ import { Header } from 'ATfile/Header';
 import { Pupil, create as cPupil } from './Pupil';
 
 type ATFpupilData = {
-  Pupils: Pupil[];
+  Pupil: Pupil[];
 };
 
 const create = (header: Header, PUPILS_TO_GENERATE: number) => ({
