@@ -25,11 +25,13 @@ const generateFileName = (atFile: ATfile, num: number): string => {
  * @param num number of XML file to generate
  */
 const generateFiles = async (pupils: number, num: number) => {
-  console.log(`Generating ${pupils} Pupil${pupils > 1 ? 's' : ''}!`);
+  const pupilsLeft = pupils;
+  console.log(`Generating ${pupils} Pupil${pupils > 1 ? 's' : ''} across ${num} files!`);
   const start = Date.now();
   const header = cHeader();
   for (let i = 0; i < num; i++) {
-    const jsObj = create(pupils, header);
+    const pupilsToCreate = Math.ceil(pupilsLeft / num) < pupilsLeft ? Math.ceil(pupilsLeft / num) : pupilsLeft;
+    const jsObj = create(pupilsToCreate, header);
     // converting to JSON before XML as the jsonify removes 'undefined' objects!
     const xml = xmlToJSON.json2xml(JSON.stringify(jsObj), { compact: true, ignoreComment: true, spaces: 4 });
     const fileName = generateFileName(jsObj, i);
