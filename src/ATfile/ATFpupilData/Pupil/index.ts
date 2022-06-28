@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
-import { create as cContact } from 'ATfile/ATFpupilData/Pupil/Contacts';
+import { Contact, create as cContact } from 'ATfile/ATFpupilData/Pupil/Contacts';
 import { createApplicationReference, createUniqueLearnerNumber, createUPN } from 'misc/generators';
 import {
   optionalRand, SuppInfo, createSuppInfo as cSuppInfo, Address, generateAddress,
@@ -33,7 +33,7 @@ export type Pupil = {
   Address?: Address;
   Phones?: Phones;
   Email?: string;
-  Contacts?: any;
+  Contacts?: Contact[];
   SchoolHistory?: SchoolHistory;
   SuppInfo?: SuppInfo;
 };
