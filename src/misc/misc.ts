@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { CHANCE_OF_OPTIONAL_VARS } from 'config';
+import { CHANCE_OF_OPTIONAL_VARS, CHANCE_OF_SUPP_INFO } from 'config';
 import * as fs from 'fs';
 import { createEntry, CSVtoArray } from 'misc';
 import * as readline from 'readline';
@@ -79,11 +79,16 @@ export type SuppInfo = {
   [key: string]: any;
 };
 
-const createSuppInfo = (): SuppInfo => ({
-  SuppId: faker.datatype.uuid(),
-  [faker.animal.type()]: JSON.parse(faker.datatype.json()),
-  ...JSON.parse(faker.datatype.json()),
-});
+const createSuppInfo = (): SuppInfo | undefined => {
+  if (Math.random() > CHANCE_OF_SUPP_INFO) {
+    return undefined;
+  }
+  return {
+    SuppId: faker.datatype.uuid(),
+    [faker.animal.type()]: JSON.parse(faker.datatype.json()),
+    ...JSON.parse(faker.datatype.json()),
+  };
+};
 
 export type Address = {
   BS7666Address?: {
