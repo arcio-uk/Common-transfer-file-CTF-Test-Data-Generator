@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { createEntry, CSVtoArray } from 'misc';
 import * as readline from 'readline';
 import Chance from 'chance';
+import moment from 'moment';
 
 const chance = new Chance();
 faker.locale = 'en_GB';
@@ -162,6 +163,63 @@ const generateAddress = (): Address => {
   return address;
 };
 
+const getDateFromString = (DOB: string) => moment(DOB, 'DD/MM/YYYY').toDate();
+
+/**
+ * Create the NC year (the year of the student) based on the DOB
+ * E1: Early first year
+ * E2: Early second year
+ * R: Reception
+ * 1 - 14: years 1 to 14
+ * M: Mixed
+ * X: Unknown
+ */
+const createNCyearActual = (DOB: string): string | number => {
+  if (Math.random() > 0.05) return 'M';
+  const dob = getDateFromString(DOB);
+  const year = moment(dob).year();
+  const currYear = moment().year();
+  const age = currYear - year;
+  if (age <= 1) {
+    return 'E1';
+  }
+  if (age <= 2) {
+    return 'E2';
+  }
+  if (age <= 4) {
+    return 'R';
+  }
+  if (age <= 18) {
+    return age - 5;
+  }
+  return 'x';
+};
+
+const Ethnicities = ['WBRI', 'WCOR', 'WENG', 'WNIR', 'WSCO', 'WWEL', 'WOWB', 'WIRI', 'WIRT', 'WOTH', 'WALB', 'WBOS', 'WCRO', 'WGRE', 'WGRK', 'WGRC', 'WITA', 'WKOS', 'WPOR', 'WSER', 'WTUR', 'WTUK', 'WTUC', 'WEUR', 'WEEU', 'WWEU', 'WOTW', 'WROM', 'WROG', 'WROR', 'WROO', 'MWBC', 'MWBA', 'MWAS', 'MWAP', 'MWAI', 'MWAO', 'MOTH', 'MAOE', 'MABL', 'MACH', 'MBOE', 'MBCH', 'MCOE', 'MWOE', 'MWCH', 'MOTM', 'AIND', 'APKN', 'AMPK', 'AKPA', 'AOPK', 'ABAN', 'AOTH', 'AAFR', 'AKAO', 'ANEP', 'ASNL', 'ASLT', 'ASRO', 'AOTA', 'BCRB', 'BAFR', 'BANN', 'BCON', 'BGHA', 'BNGN', 'BSLN', 'BSOM', 'BSUD', 'BAOF', 'BOTH', 'BEUR', 'BNAM', 'BOTB', 'CHNE', 'CHKC', 'CMAL', 'CSNG', 'CTWN', 'COCH', 'OOTH', 'OAFG', 'OARA', 'OEGY', 'OFIL', 'OIRN', 'OIRQ', 'OJPN', 'OKOR', 'OKRD', 'OLAM', 'OLEB', 'OLIB', 'OMAL', 'OMRC', 'OPOL', 'OTHA', 'OVIE', 'OYEM', 'OOEG'];
+
+/**
+ * Gets a random ethnicity code, creates a very diverse school
+ */
+const getEthnicity = (): string => {
+  if (Math.random() > 0.05) {
+    return 'NOBT';
+  }
+  return Ethnicities[Math.floor(Math.random() * Ethnicities.length)];
+};
+
+const LanguageTypes = ['F', 'M', 'H', 'T', 'S', 'C', 'U', 'V', 'W'];
+
+const getLanguageType = (): string => LanguageTypes[Math.floor(Math.random() * LanguageTypes.length)];
+
+const Languages = ['ACL', 'ADA', 'AFA', 'AFK', 'AKA', 'AKA', 'AKA', 'ALB', 'ALU', 'AMR', 'ARA', 'ARA', 'ARA', 'ARA', 'ARA', 'ARA', 'ARA', 'ARM', 'ASM', 'ASR', 'AYB', 'AYM', 'AZE', 'BAI', 'BAL', 'BEJ', 'BEL', 'BEM', 'BHO', 'BIK', 'BLT', 'BMA', 'BNG', 'BNG', 'BNG', 'BNG', 'BSL', 'BSQ', 'BUL', 'CAM', 'CAT', 'CCE', 'CCF', 'CGA', 'CGR', 'CHE', 'CHI', 'CHI', 'CHI', 'CHI', 'CHI', 'CHI', 'CKW', 'CRN', 'CTR', 'CWA', 'CYM', 'CZE', 'DAN', 'DGA', 'DGB', 'DIN', 'DUT', 'DZO', 'EBI', 'EDO', 'EFI', 'ENB', 'ENG', 'ESA', 'EST', 'EWE', 'EWO', 'FAN', 'FIJ', 'FIN', 'FON', 'FRN', 'FUL', 'GAA', 'GAE', 'GAL', 'GEO', 'GER', 'GGO', 'GKY', 'GLG', 'GRE', 'GRE', 'GRE', 'GRN', 'GUJ', 'GUN', 'GUR', 'HAU', 'HDK', 'HEB', 'HER', 'HGR', 'HIN', 'IBA', 'IDM', 'IGA', 'IGB', 'IJO', 'ILO', 'ISK', 'ISL', 'ITA', 'JAV', 'JIN', 'JPN', 'KAM', 'KAN', 'KAR', 'KAS', 'KAU', 'KAZ', 'KCH', 'KGZ', 'KHA', 'KHY', 'KIN', 'KIR', 'KIS', 'KLN', 'KMB', 'KME', 'KNK', 'KNY', 'KON', 'KOR', 'KPE', 'KRI', 'KRU', 'KSI', 'KSU', 'KUR', 'KUR', 'KUR', 'KUR', 'LAO', 'LBA', 'LBA', 'LBA', 'LGA', 'LGB', 'LGS', 'LIN', 'LIT', 'LNG', 'LOZ', 'LSO', 'LTV', 'LTZ', 'LUE', 'LUN', 'LUO', 'LUY', 'MAG', 'MAI', 'MAK', 'MAN', 'MAN', 'MAN', 'MAN', 'MAO', 'MAR', 'MAS', 'MDV', 'MEN', 'MKD', 'MLG', 'MLM', 'MLT', 'MLY', 'MLY', 'MLY', 'MNA', 'MNG', 'MNX', 'MOR', 'MSC', 'MUN', 'MYA', 'NAH', 'NAM', 'NBN', 'NDB', 'NDB', 'NDB', 'NEP', 'NOR', 'NOT', 'NUE', 'NUP', 'NWA', 'NZM', 'OAM', 'OAM', 'OAM', 'OGN', 'ORI', 'ORM', 'OTB', 'OTH', 'OTL', 'PAG', 'PAM', 'PAT', 'PHA', 'PHR', 'PNJ', 'PNJ', 'PNJ', 'PNJ', 'PNJ', 'POL', 'POR', 'POR', 'POR', 'PRS', 'PRS', 'PRS', 'PRS', 'QUE', 'RAJ', 'REF', 'RME', 'RMI', 'RMN', 'RMN', 'RMN', 'RMS', 'RNY', 'RNY', 'RNY', 'RUS', 'SAM', 'SCB', 'SCB', 'SCB', 'SCB', 'SCO', 'SHL', 'SHO', 'SID', 'SIO', 'SLO', 'SLV', 'SND', 'SNG', 'SNH', 'SOM', 'SPA', 'SRD', 'SRK', 'SSO', 'SSO', 'SSO', 'SSW', 'STS', 'SUN', 'SWA', 'SWA', 'SWA', 'SWA', 'SWA', 'SWA', 'SWE', 'TAM', 'TEL', 'TEM', 'TES', 'TGE', 'TGL', 'TGL', 'TGL', 'TGR', 'THA', 'TIB', 'TIV', 'TMZ', 'TMZ', 'TMZ', 'TMZ', 'TNG', 'TON', 'TPI', 'TRI', 'TSO', 'TUK', 'TUL', 'TUM', 'TUR', 'UKR', 'UMB', 'URD', 'URH', 'UYG', 'UZB', 'VEN', 'VIE', 'VSY', 'VSY', 'VSY', 'VSY', 'VSY', 'WAP', 'WCP', 'WOL', 'WPE', 'XHO', 'YAO', 'YDI', 'YOR', 'ZND', 'ZUL', 'ZZZ'];
+
+const getLanguage = (): string => Languages[Math.floor(Math.random() * Languages.length)];
+
+const getServiceChild = (): string => {
+  const types = ['Y', 'N', 'U', 'R'];
+  return types[Math.floor(Math.random() * types.length)];
+};
+
 export {
   CreateSchoolJSON,
   optionalRand,
@@ -169,4 +227,10 @@ export {
   getRelationship,
   createSuppInfo,
   generateAddress,
+  getDateFromString,
+  createNCyearActual,
+  getEthnicity,
+  getLanguageType,
+  getLanguage,
+  getServiceChild,
 };

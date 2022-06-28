@@ -56,7 +56,7 @@ const createUPN = (header: Header): string => {
   const number = String(faker.datatype.number({ max: 999999999999 })).padStart(12, '0');
   const checkLetter = calculateCheckLetter(number);
   const UPN = LEA + number;
-  return Math.random() > 0.5 ? checkLetter + UPN + checkLetter : UPN + checkLetter;
+  return Math.random() > 0.5 ? checkLetter + UPN + checkLetter : checkLetter + UPN;
 };
 
 /**

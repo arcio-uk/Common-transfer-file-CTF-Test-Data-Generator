@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { Header } from 'ATfile/Header';
-import { create as cContact } from 'ATfile/ATFpupilData/Pupil/Contacts';
+import { Contact, create as cContact } from 'ATfile/ATFpupilData/Pupil/Contacts';
 import { createApplicationReference, createUniqueLearnerNumber, createUPN } from 'misc/generators';
 import {
   optionalRand, SuppInfo, createSuppInfo as cSuppInfo, Address, generateAddress,
@@ -9,6 +9,10 @@ import moment from 'moment';
 import { Phones, create as cPhones } from 'ATfile/ATFpupilData/Pupil/Phones';
 import { Admissions, create as cAdmissions } from 'ATfile/ATFpupilData/Pupil/Admissions';
 import { SENhistory, create as cSENhistory } from 'ATfile/ATFpupilData/Pupil/SENhistory';
+import { SchoolHistory, create as cSchoolHistory } from 'ATfile/ATFpupilData/Pupil/SchoolHistory';
+import { LookedAfter, create as cLookedAfter } from 'ATfile/ATFpupilData/Pupil/LookedAfter';
+import { FSMhistory, create as cFSMhistory } from 'ATfile/ATFpupilData/Pupil/FSMhistory';
+import { BasicDetails } from 'ATfile/ATFpupilData/Pupil/BasicDetails';
 
 faker.locale = 'en_GB';
 
@@ -22,16 +26,16 @@ export type Pupil = {
   Forename: string;
   DOB: string;
   Gender: string;
-  BasicDetails?: any;
-  FSMhistory?: any;
-  LookedAfter?: any;
+  BasicDetails?: BasicDetails;
+  FSMhistory?: FSMhistory;
+  LookedAfter?: LookedAfter;
   SENhistory?: SENhistory;
   Admissions?: Admissions;
   Address?: Address;
   Phones?: Phones;
   Email?: string;
-  Contacts?: any;
-  SchoolHistory?: any;
+  Contacts?: Contact[];
+  SchoolHistory?: SchoolHistory;
   SuppInfo?: SuppInfo;
 };
 
@@ -46,6 +50,8 @@ const create = (header: Header): Pupil => {
     DOB,
     Gender: Math.random() > 0.5 ? 'M' : 'F',
 
+    FSMhistory: cFSMhistory(DOB),
+    LookedAfter: optionalRand(cLookedAfter()),
     SENhistory: optionalRand(cSENhistory(DOB)),
     Admissions: optionalRand(cAdmissions()),
     Address: optionalRand(generateAddress()),
@@ -56,7 +62,7 @@ const create = (header: Header): Pupil => {
     so you can have many fathers, mothers and other contacts!
   */
     Contacts: [...Array(Math.floor(Math.random() * 3) + 1)].map(() => cContact()),
-
+    SchoolHistory: optionalRand(cSchoolHistory(DOB)),
     SuppInfo: optionalRand(cSuppInfo()),
   };
 };
