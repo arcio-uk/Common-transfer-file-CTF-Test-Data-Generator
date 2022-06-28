@@ -12,6 +12,7 @@ import { SENhistory, create as cSENhistory } from 'ATfile/ATFpupilData/Pupil/SEN
 import { SchoolHistory, create as cSchoolHistory } from 'ATfile/ATFpupilData/Pupil/SchoolHistory';
 import { LookedAfter, create as cLookedAfter } from 'ATfile/ATFpupilData/Pupil/LookedAfter';
 import { FSMhistory, create as cFSMhistory } from 'ATfile/ATFpupilData/Pupil/FSMhistory';
+import { BasicDetails } from 'ATfile/ATFpupilData/Pupil/BasicDetails';
 
 faker.locale = 'en_GB';
 
@@ -25,7 +26,7 @@ export type Pupil = {
   Forename: string;
   DOB: string;
   Gender: string;
-  BasicDetails?: any;
+  BasicDetails?: BasicDetails;
   FSMhistory?: FSMhistory;
   LookedAfter?: LookedAfter;
   SENhistory?: SENhistory;
