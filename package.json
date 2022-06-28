@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/arcio-uk/Common-transfer-file-CTF-Test-Data-Generator#readme",
   "scripts": {
-    "ts-dev": "ts-node-dev --no-notify --respawn --exit-child -r tsconfig-paths/register src/",
     "csv-to-json": "ts-node-dev src/ConvertCSVtoJSON.ts",
     "create-1-student": "ts-node-dev --no-notify --exit-child -r tsconfig-paths/register src/CreateStudents.ts -- 1",
     "create-5-students": "ts-node-dev --no-notify --exit-child -r tsconfig-paths/register src/CreateStudents.ts -- 5",
-    "create-100-students-5-files": "ts-node-dev --no-notify --exit-child -r tsconfig-paths/register src/CreateStudents.ts -- 500 5"
+    "create-100-students-5-files": "ts-node-dev --no-notify --exit-child -r tsconfig-paths/register src/CreateStudents.ts -- 500 5",
+    "ts-dev": "ts-node-dev --no-notify --respawn --exit-child -r tsconfig-paths/register src/"
   },
   "devDependencies": {
     "@types/chance": "^1.1.3",
