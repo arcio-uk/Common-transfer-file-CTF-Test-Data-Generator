@@ -1,5 +1,8 @@
 # Common-transfer-file-CTF-Test-Data-Generator
-This project is to allow generation of test data for the Common transfer file (CTF) XML Standard
+Do you need to test out your MIS without exposing sensitive student data?
+It's not worth taking the risk of uploading school's data to an untrusted company on cloud servers which could be anywhere.
+
+This project is to allow generation of test data for the Common transfer file (CTF) XML Standard, to allow you to test out software safely.
 
 # Need Custom Data?
 
