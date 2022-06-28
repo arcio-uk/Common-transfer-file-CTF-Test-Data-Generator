@@ -5,11 +5,8 @@ type ATFpupilData = {
   Pupils: Pupil[];
 };
 
-const create = (header: Header) => {
-  const amount = 1;// Math.floor(Math.random() * 2)+1;
-  return {
-    Pupils: [...Array(amount).keys()].map(() => cPupil(header)),
-  };
-};
+const create = (header: Header, PUPILS_TO_GENERATE: number) => ({
+  Pupil: [...Array(PUPILS_TO_GENERATE).keys()].map(() => cPupil(header)),
+});
 
 export { ATFpupilData, create };
