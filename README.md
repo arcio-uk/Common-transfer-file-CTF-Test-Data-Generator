@@ -1,10 +1,27 @@
 # Common-transfer-file-CTF-Test-Data-Generator
 This project is to allow generation of test data for the Common transfer file (CTF) XML Standard
 
-# To be made opensource
-Once this project has been made functional, the objective is to make it open source!
+# How to use it
+
+1. Install Node.js and NPM
+2. run `npm install`
+3. run `npm run csv-to-json`
+4. run `npm run create-students -- {the amount of students you want to generate} {the amount of files you want to generate}`
+5. go to /output/ and look at your newly generated XML files!
+
+
+# Config
+
+Take a look at /src/config.ts for config variables.
+
+	CHANCE_OF_OPTIONAL_VARS is how frequently the generator will generate optional variables.
+
+	CHANCE_OF_SUPP_INFO is how frequently the generator will generate supplemental information (SuppInfo).
+
+
 
 # Resources
+
 [CTF Specification Page](https://www.gov.uk/government/collections/common-transfer-file)
 
 [CBDS download page](https://www.gov.uk/government/publications/common-basic-data-set-cbds-database)
