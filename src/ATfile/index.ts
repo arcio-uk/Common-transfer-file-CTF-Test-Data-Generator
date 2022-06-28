@@ -1,13 +1,18 @@
-import { create as cHeader } from 'ATfile/Header';
-import { create as cATFpupilData } from 'ATfile/ATFpupilData';
+import { create as cHeader, Header } from 'ATfile/Header';
+import { ATFpupilData as ATFpupilDataType, create as cATFpupilData } from 'ATfile/ATFpupilData';
 
-const create = () => {
-  const header = cHeader();
-  const ATFpupilData = cATFpupilData(header);
+type ATfile = {
+  header: Header;
+  ATFpupilData: ATFpupilDataType;
+}
+
+const create = (PUPILS_TO_GENERATE: number, _inHeader?: Header): ATfile => {
+  const header = _inHeader || cHeader();
+  const ATFpupilData = cATFpupilData(header, PUPILS_TO_GENERATE);
   return {
     header,
     ATFpupilData,
   };
 };
 
-export { create };
+export { ATfile, create };

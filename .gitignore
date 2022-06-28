@@ -107,3 +107,4 @@ src/output.json
 # too big for git!
 src/data/edubasealldata.json
 src/output.xml
+output/*.xml

@@ -34,7 +34,9 @@ export type Pupil = {
   Address?: Address;
   Phones?: Phones;
   Email?: string;
-  Contacts?: Contact[];
+  Contacts?: {
+    Contact: Contact[];
+  };
   SchoolHistory?: SchoolHistory;
   SuppInfo?: SuppInfo;
 };
@@ -58,10 +60,13 @@ const create = (header: Header): Pupil => {
     Phones: optionalRand(cPhones()),
     Email: optionalRand(faker.internet.email()),
     /*
-    at Arcio, we're not lazy, we're progressive,
-    so you can have many fathers, mothers and other contacts!
-  */
-    Contacts: [...Array(Math.floor(Math.random() * 3) + 1)].map(() => cContact()),
+      at Arcio, we're not lazy, we're progressive,
+      so you can have many fathers, mothers and other contacts!
+    */
+    Contacts: {
+      Contact: [...Array(Math.floor(Math.random() * 3) + 1)].map(() => cContact()),
+    },
+
     SchoolHistory: optionalRand(cSchoolHistory(DOB)),
     SuppInfo: optionalRand(cSuppInfo()),
   };
