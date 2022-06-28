@@ -7,7 +7,7 @@ import 'data/edubasealldata.json';
 const init = async () => {
   console.log('Generating!');
   const start = Date.now();
-  const jsObj = create();
+  const jsObj = create(1);
 
   // converting to JSON before XML as the jsonify removes 'undefined' objects!
   // TODO: replace this soon
