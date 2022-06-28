@@ -7,7 +7,7 @@ import 'data/edubasealldata.json';
 const init = async () => {
   const args: any[] = process.argv.slice(2);
 
-  const PUPILS_TO_GENERATE = args[0] ? args[0] : 1;
+  const PUPILS_TO_GENERATE = args[0] ? parseInt(args[0], 10) : 1;
   console.log(JSON.stringify(args, null, 2));
 
   console.log(`Generating ${PUPILS_TO_GENERATE} Pupil${PUPILS_TO_GENERATE > 1 ? 's' : ''}!`);
