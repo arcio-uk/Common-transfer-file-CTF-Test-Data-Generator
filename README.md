@@ -4,6 +4,9 @@ It's not worth taking the risk of uploading school's data to an untrusted compan
 
 This project is to allow generation of test data for the Common transfer file (CTF) XML Standard, to allow you to test out software safely.
 
+# Quick XML files download
+Go [here](https://github.com/arcio-uk/Common-transfer-file-CTF-Test-Data-Generator/releases/tag/v1.0) to quickly download some XML transfer files.
+
 # Need Custom Data?
 
 Email us at [queries@arcio.uk](mailto:queries@arcio.uk) for custom test data generation services to meet your requirements!
