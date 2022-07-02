@@ -108,3 +108,5 @@ src/output.json
 src/data/edubasealldata.json
 src/output.xml
 output/*.xml
+
+*.zip
